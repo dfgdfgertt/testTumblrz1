@@ -1,0 +1,254 @@
+body {
+    font-family: "Lato", sans-serif;
+    display: flex;
+}
+
+.iconoption {
+    margin-top: 100px;
+}
+
+.main {
+    margin-left: 50px;
+}
+
+.avata {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px white;
+    margin-top: 10px;
+    margin-left: 5px;
+    /* margin-bottom: 10px;
+    margin-right: 10px; */
+}
+
+.avatadanhba {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 50px;
+}
+
+.sidenav {
+    background-color: #2a2a72;
+    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+    height: 100%;
+    width: 70px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    /* padding-top: 10px; */
+}
+
+.avatar {
+    margin-bottom: 40px;
+}
+
+.sidenav a {
+    margin-right: 3px;
+    padding-left: 10px;
+    padding-top: 20px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+#btnThoat {
+    position: absolute;
+    bottom: 0px;
+    margin: 10px;
+    width: 70px;
+}
+
+.sidenav a:hover {
+    color: #000000;
+}
+
+.title {
+    display: flex;
+    padding-top: 25px;
+    padding-left: 20px;
+}
+
+.titleName {
+    padding-left: 20px;
+}
+
+.themdanhba {
+    background-color: #2f4353;
+    background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
+    margin-bottom: 12px;
+    margin-top: 20px;
+    display: flex;
+    transition: 0.5s;
+    padding-left: 20px;
+    /* border-bottom: 1px solid black;
+    border-top: 1px solid black; */
+}
+
+.themdanhba:hover {
+    /* transform: scale(1.1); */
+}
+
+.themdanhba p {
+    padding-left: 20px;
+    padding-top: 17px;
+    font-size: 17px;
+}
+
+.btnthongtincanhan {
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.chatbox,
+.dsketban,
+.banbe {
+    /* background-color: #1695A6; */
+    display: flex;
+    height: 70px;
+    padding-top: 5px;
+    padding-left: 20px;
+    transition: 0.2s;
+    width: 95%;
+    /* padding-bottom: 10px; */
+}
+
+.chatbox:hover {
+    transform: scale(1.1);
+    background-color: #63a4ff;
+    background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
+    border-right: 5px solid #1E8CB0;
+}
+
+.danhsachketban :hover {
+    color: #1695A6;
+}
+
+.option {
+    transition: 0.2s;
+}
+
+.option:hover {
+    transform: scale(1.1);
+}
+
+.col-3 {
+    background-color: aliceblue;
+    /* color: white; */
+    height: 100vh;
+}
+
+.col-9 {
+    /* background-color: #C2DCEB; */
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.chatinfo {
+    display: flex;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+    background-color: white;
+}
+
+.chatboxavatar {
+    width: 90px;
+    margin-right: 20px;
+}
+
+.noidung {
+    padding-left: 20px;
+}
+
+.tenban {
+    padding-top: 15px;
+    padding-left: 10px;
+    font-weight: 450;
+}
+
+.avatarpopup {
+    margin-left: 100px;
+    padding-bottom: 50px;
+    width: 47%;
+}
+
+.avatamodal {
+    border-radius: 50%;
+    width: 120%;
+    height: 100%;
+    margin-right: 30px;
+}
+
+#nhaptinnhan {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 70px;
+}
+
+#messageInput {
+    position: absolute;
+    width: 91%;
+    height: 70px;
+    margin-right: 32px;
+    right: 5%;
+    border-radius: 20px;
+}
+
+#submit {
+    position: absolute;
+    right: 0%;
+    margin-top: 5px;
+    margin-right: 19px;
+    margin-bottom: 5px;
+    height: 60px;
+}
+
+.namechat {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.fa {
+    position: absolute;
+    margin-top: 17px;
+    font-size: 50px;
+    width: 50px;
+    text-align: center;
+    right: 0px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+
+/* nhập số điện thoại nè */
+
+.intl-tel-input {
+    display: table-cell;
+}
+
+.intl-tel-input .selected-flag {
+    z-index: 4;
+}
+
+.intl-tel-input .country-list {
+    z-index: 5;
+}
+
+.input-group .intl-tel-input .form-control {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0;
+}

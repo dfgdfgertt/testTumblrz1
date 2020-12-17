@@ -1,0 +1,62 @@
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+
+<body style="background-image: url(images/background.png);">
+    <a href="/danhsachnguoidung">
+        Home page
+    </a>
+    <div class="container" style="width: 50%; background-color:#fff; border-radius: 10px; box-shadow: 0 0 5px 0 rgba(0,0,0,0.3);">
+        <h2>Thay đổi thông tin người dùng</h2>
+        <form action="/updateUser/<%= user._id %>" method="POST" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="firstName">Họ</label>
+                    <input type="text" class="form-control" id="ho" placeholder="Tên" name='ho' value="<%= user.ho %>">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="firstName">Tên</label>
+                    <input type="text" class="form-control" id="ten" placeholder="Tên" name='ten' value="<%= user.ten %>">
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Email" name='email' value="<%= user.email %>">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="phone">Điện thoại</label>
+                    <input type="text" class="form-control" id="SDT" placeholder="Số điện thoại" name='SDT' value="<%= user.SDT %>">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-6">
+                    <label for="ngaySinh">Ngày sinh</label>
+                    <input type="date" class="form-control" id="ngaysinh" name='ngaysinh' value="<%= user.ngaysinh %>">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="pass">Mật khẩu</label>
+                    <input type="password" class="form-control" id="matkhau" placeholder="Password" name='matkhau' value="<%= user.matkhau %>">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="gioiTinh">Giới tính</label> <br>
+                    <input type="radio" value="Nam" id="gioitinh" name="gioitinh">
+                    <label>Nam</label> &nbsp; &nbsp;
+                    <input type="radio" value="Nữ" id="gioitinh" name="gioitinh">
+                    <label>Nữ</label> &nbsp; &nbsp;
+                    <input type="radio" value="Khác" id="gioitinh" name="gioitinh">
+                    <label>Khác</label>
+                </div>
+                <div class="form-group">
+                    <label for="">Avatar</label>
+                    <input type="file" name="avatarNew" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+            </div>
+            <button id="save" style="margin-bottom: 10px; margin-left: 680px;" type="submit" class="btn btn-primary">Lưu</button>
+        </form>
+    </div>
+</body>

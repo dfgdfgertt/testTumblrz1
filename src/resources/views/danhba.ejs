@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Danh Bạ</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/css/stylechat.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="sidenav">
+        <img class="avata" src="<%=useradd.myuser.avatar %>">
+        <div class="iconoption">
+            <a href="#"><img src="images/chat.png" class="option" title="Chat"></a>
+            <a href="#"><img src="images/contacts1.png" alt="" class="option" title="Danh bạ"></a>
+            <a href="#"><img src="images/list-flat.png" alt="" class="option" data-toggle="modal" data-target="#myModalKetban" title="Danh sách kết bạn"></a>
+            <a href="/" style="position: absolute; bottom: 10px"><img src="images/logout.png" alt="" class="option"></a>
+
+        </div>
+    </div>
+    <div class="container-fluid" style="margin-left: 70px;">
+        <div class="row">
+            <div class="col-3 nopadding" style="border-right: 1px solid darkgrey;">
+                <div class="title">
+                    <!-- <img src="images/logo.png" alt="" width="170px"> -->
+                    <div class="titleName">
+                        <h5><span>Tumblrz - <%=useradd.myuser.ho %> <%=useradd.myuser.ten %></span></h5>
+                    </div>
+                </div>
+
+                <div id="timkiemban" class="themdanhba" data-toggle="modal" data-target="#myModalTimban">
+                    <img src="images/add.png" width="40px" height="40px" style="margin-top: 9px;">
+                    <p>Thêm bạn bằng số điện thoại</p>
+                </div>
+
+                <% useradd.listfriends.forEach((entry) => { %>
+                    <% if(entry.trangthaixacnhan == 'true') { %>
+                        <form method="POST" action="/thongtinban">
+                            <div id="danhba" class="tinnhan" data-toggle="modal" data-target="#myModal">
+                                <div id="banbe" class="chatbox" onclick="XemThongTinFriend('<%=entry.sdtNguoiNhan %>')">
+                                    <div class="avatarban">
+                                        <img class="avatadanhba" src="<%=entry.avatarNguoiNhan %>">
+                                    </div>
+                                    <input hidden type="text " value="<%=entry.sdtNguoiNhan %>" name="sdttimfriend">
+                                    <button type="submit" style="width: 100%;" hidden id="<%=entry.sdtNguoiNhan %>"></button>
+                                    <!-- LẤY THÔNG TIN TỪ THẺ P NHA NHƠN -->
+                                    <div class="tenban">
+                                        <p>
+                                            <%=entry.tenNguoiNhan %>
+                                        </p>
+                                        <!-- <button class="btn btn-white" type="submit" style="width: 100%;"><%=entry.tenNguoiNhan %></button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <% } %>
+                            <% }) %>
+            </div>
+            <div class="col-9">
+                <img src="images/comig.png" alt="" style="margin-left: 270px; margin-top: 170px;">
+            </div>
+
+        </div>
+
+
+    </div>
+    <!-- The Modal tìm bạn-->
+    <div class="modal" id="myModalTimban">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header" style="text-align: center;">
+                    <h4 class="modal-title">Tìm kiếm bạn bè</h4>
+                    <button type="button" class="close" data-dismiss="modal" onclick="closeModel()">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <!-- <p>Nhập số điện thoại:</p> -->
+                    <form action="/timkiemban" method="POST" style=" margin-left: 20px;"> 
+                        <div class="input-prepend  " style="border: none; box-shadow: none;"><span style="background: url(&quot;https://zalo-chat-static.zadn.vn/v1/emoji.png?v=20180604&quot;) 76% 97.5% / 5100%; -webkit-user-drag: none; width: 26px; height: 26px; display: inline-block; vertical-align: top; margin-right: 10px;"></span>(+84)
+                            <input type="text" name="sdtadd" class="input-prepended" maxlength="100" required="" data-translate-placeholder="STR_INPUT_PHONE_NUMBER" data-translate-title="STR_INPUT_PHONE_REQUEST" title="Vui lòng điền số điện thoại " placeholder="Số điện thoại " value=""
+                                style="border: none; box-shadow: none; left: 10px; position: relative;">
+                        </div>
+                        <!-- <div class="form-group">
+                            <i><img src="images/flag.png" alt="" width="37px" style="border-radius: 5px; margin-right: 1px;"></i>
+                        </div>
+                        <div class="form-group" style="width: 220px;">
+                            <input class="form-control" type="text" name="sdtadd" placeholder="Nhập số điện thoại">
+                        </div> -->
+                        <div class="form-group" style="margin-top: 30px ; display: flex; height: 40px; width: 200px;">
+                            <button type="submit" class="btn btn-primary" style="margin-right:10px ;">Tìm kiếm</button>
+                            <button type="button" class="btn btn-light" data-dismiss="modal" onclick="closeModel()">Đóng</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The Modal Thông tin bạn-->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Thông tin cá nhân</h4>
+                    <button type="button" class="close" data-dismiss="modal" onclick="closeModel()">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <form action="/xoaban" method="POST">
+                    <div class="container">
+                        <img class="avatarpopup" src="<%=useradd.findUser.avatar %>">
+                        <div class="form-row" style="margin-left: 30px;">
+                            <div class="col-6 col-sm-4 form-group">
+                                <label>Họ tên: </label>
+                            </div>
+                            <div class="col-6 col-sm-8 form-group">
+                                <label><%=useradd.findUser.ho %> <%=useradd.findUser.ten %></label>
+                            </div>
+                            <div class="col-6 col-sm-4 form-group">
+                                <label>Ngày sinh:</label>
+                            </div>
+                            <div class="col-6 col-sm-8 form-group">
+                                <label><%=useradd.findUser.ngaysinh %></label>
+                            </div>
+                            <div class="col-6 col-sm-4 form-group">
+                                <label>Giới tính:</label>
+                            </div>
+                            <div class="col-6 col-sm-8 form-group">
+                                <label><%=useradd.findUser.gioitinh %></label>
+                            </div>
+                            <div class="col-6 col-sm-4 form-group">
+                                <label>Số điện thoại:</label>
+                            </div>
+                            <div class="col-6 col-sm-8 form-group">
+                                <label><%=useradd.findUser.SDT %></label>
+                                <input hidden type="text" value="<%=useradd.findUser.SDT %>" name="sdtfriend">
+                            </div>
+                            <div class="col-6 col-sm-4 form-group">
+                                <label>Email:</label>
+                            </div>
+                            <div class="col-6 col-sm-8 form-group">
+                                <label><%=useradd.findUser.email %></label>
+                            </div>
+                            <div class="btnthongtincanhan">
+                                <button type="submit" class="btn btn-primary">Hủy Kết bạn</button>
+                                <button type="button" class="btn btn-light" data-dismiss="modal" onclick="closeModel()">Đóng</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- The Modal tìm bạn ra cái này-->
+    <div class="modal" id="myModalKetQuaTimBan">
+        <div class="modal-dialog ">
+            <div class="modal-content ">
+                <!-- Modal Header -->
+                <div class="modal-header ">
+                    <h4 class="modal-title ">Thông tin cá nhân</h4>
+                    <button type="button " class="close " data-dismiss="modal " onclick="closeModel()">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body ">
+                    <form action="/ketban " method="POST">
+                        <div class="container ">
+                            <img class="avatarpopup" src="<%=useradd.findUser.avatar %>">
+                            <div class="form-row " style="margin-left: 30px; ">
+                                <div class="col-6 col-sm-4 form-group">
+                                    <label>Họ tên: </label>
+                                </div>
+                                <div class="col-6 col-sm-8 form-group">
+                                    <label><%=useradd.findUser.ho %> <%=useradd.findUser.ten %></label>
+                                </div>
+                                <div class="col-6 col-sm-4 form-group">
+                                    <label>Ngày sinh:</label>
+                                </div>
+                                <div class="col-6 col-sm-8 form-group">
+                                    <label><%=useradd.findUser.ngaysinh %></label>
+                                </div>
+                                <div class="col-6 col-sm-4 form-group">
+                                    <label>Giới tính:</label>
+                                </div>
+                                <div class="col-6 col-sm-8 form-group">
+                                    <label><%=useradd.findUser.gioitinh %></label>
+                                </div>
+                                <div class="col-6 col-sm-4 form-group">
+                                    <label>Số điện thoại:</label>
+                                </div>
+                                <div class="col-6 col-sm-8 form-group">
+                                    <label><%=useradd.findUser.SDT %></label>
+                                    <input hidden type="text" value="<%=useradd.findUser.SDT %>" name="sdtuser">
+                                </div>
+                                <div class="col-6 col-sm-4 form-group">
+                                    <label>Email:</label>
+                                </div>
+                                <div class="col-6 col-sm-8 form-group">
+                                    <label><%=useradd.findUser.email %></label>
+                                </div>
+                                <div class="btnthongtincanhan">
+                                    <button type="submit" class="btn btn-primary">Kết bạn</button>
+                                    <button type="button" class="btn btn-light" data-dismiss="modal" onclick="closeModel()">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- The Modal yều cầu kết bạn ra cái này-->
+    <div class="modal" id="myModalKetban">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Danh Sách Kết Bạn</h4>
+                    <button type="button" class="close" data-dismiss="modal" onclick="closeModel()">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <% useradd.listrequest.forEach((reque) => { %>
+                        <% if(reque.trangthaixacnhan == 'false') { %>
+                            <form method="POST" action="/xacyeucau">
+                                <div class="row">
+                                    <div class="dsketban">
+                                        <div class="chatboxavatar">
+                                            <img class="avatamodal" src="<%=reque.avatarNguoiGui %>">
+                                        </div>
+                                        <div class="noidung">
+                                            <h5>
+                                                <%=reque.tenNguoiGui %>
+                                            </h5><span>Hello, kết bạn với mình nha</span>
+                                            <input hidden type="text" name="sdtreq" value="<%=reque.sdtNguoiGui %>">
+                                        </div>
+                                        <div style="margin-left: 50px;  width: 300px;height: 50px; display: flex;">
+                                            <button type="sumbit" class="btn btn-primary" value="yes" name="xacnhan" style="margin-right: 10px;">Đồng ý</button>
+                                            <button type="submit" class="btn btn-light" value="no" name="xacnhan">Hủy bỏ</button>
+                                        </div>
+                                    </div>
+
+                            </form>
+                            </div>
+                            <hr/>
+                            <% } %>
+                                <% }) %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="text" hidden value="<%=useradd.styleDisplay.styleDisplay1 %>" id="styleDisplay1">
+    <input type="text" hidden value="<%=useradd.styleDisplay.styleDisplay2 %>" id="styleDisplay2">
+    <!-- div de goi modal thong tin tim ban-->
+    <div hidden id="thongtintimban" data-toggle="modal" data-target="#myModalKetQuaTimBan"></div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        var modalxemban = document.getElementById("styleDisplay2").value;
+        var modaltimban = document.getElementById("styleDisplay1").value;
+        // document.getElementById("myModalKetQuaTimBan").style.display = document.getElementById("styleDisplay1").value;
+        // document.getElementById("myModal").style.display = document.getElementById("styleDisplay2").value;
+        if (modalxemban == "block") {
+            document.getElementById("danhba").click();
+            modalxemban = "none";
+        }
+        if (modaltimban == "block") {
+            document.getElementById("thongtintimban").click();
+            modaltimban = "none";
+        }
+
+        function closeModel() {
+            document.getElementById("myModalKetQuaTimBan").style.display = "none";
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        function XemThongTinFriend(sdtfriend) {
+            document.getElementById(sdtfriend).click();
+        }
+    </script>
+</body>
+
+</html>

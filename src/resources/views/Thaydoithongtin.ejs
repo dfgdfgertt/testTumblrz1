@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <title>Nhập thông tin</title>
+   
+
+</head>
+
+<body style="width: 70%; margin: 0 auto ;background-image: url(images/background.png);">
+  <div class="form-row" style="background-color:aliceblue; border-radius: 10px;">
+    <div class="col-6 col-sm-4 form-group" style="border-right: 1px solid black;">
+      <div class="container">
+        <img class="avata" src="images/avata.png">
+        <div class="form-row" style="margin-left: 30px;">
+          <div class="col-6 col-sm-4 form-group">
+            <label>Họ tên:</label>
+          </div>
+          <div class="col-6 col-sm-8 form-group">
+            <label>Cường nè</label>
+          </div>
+          <div class="col-6 col-sm-4 form-group">
+            <label>Ngày sinh:</label>
+          </div>
+          <div class="col-6 col-sm-8 form-group">
+            <label>01/08/1999</label>
+          </div>
+          <div class="col-6 col-sm-4 form-group">
+            <label>Giới tính:</label>
+          </div>
+          <div class="col-6 col-sm-8 form-group">
+            <label>Nam</label>
+          </div>
+          <div class="col-6 col-sm-4 form-group">
+            <label>Số điện thoại:</label>
+          </div>
+          <div class="col-6 col-sm-8 form-group">
+            <label></label>
+          </div>
+          <div class="col-6 col-sm-4 form-group">
+            <label>Email:</label>
+          </div>
+          <div class="col-6 col-sm-8 form-group">
+            <label>vochicuong18</label>
+          </div>
+        </div>
+
+        <button id="btnChuyen" style="margin: 10px;" type="submit" class="btn btn-primary">Cập nhật thông
+          tin</button>
+        <button id="btnHuy" style="margin: 10px;" type="submit" class="btn btn-primary">Hủy cập nhật</button>
+      </div>
+    </div>
+
+    <div id="dright" class="col-6 col-sm-8 form-group">
+      <div class="container">
+        <h2 style="padding-top: 30px;">Thông tin của bạn</h2>
+        <form class="form_thongtin">
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <label for="lastName">Họ</label>
+              <input type="text" class="form-control" id="ho" placeholder="HỌ">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <label for="lastName">Tên</label>
+              <input type="text" class="form-control" id="lastName" placeholder="Tên">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-6">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Email">
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="phone">Điện thoại</label>
+              <input type="text" class="form-control" id="myAddress" placeholder="Số điện thoại">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="pass">Mật khẩu mới</label>
+            <input type="password" class="form-control" id="pass" placeholder="Password">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <label for="ngaySinh">Ngày sinh</label>
+              <input type="date" class="form-control" id="ngaySinh">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-sm-4">
+              <label for="gioiTinh">Giới tính</label> <br>
+              <input type="radio" id="nam" name="gioiTinh">
+              <label for="nam">Nam</label><br>
+              <input type="radio" id="nu" name="gioiTinh">
+              <label for="nư">Nữ</label><br>
+              <input type="radio" id="khac" name="gioiTinh">
+              <label for="khac">Khác</label><br>
+              <button id="save" type="submit" class="btn btn-primary">Lưu</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <script language="javascript">
+    document.getElementById("btnChuyen").onclick = function () {
+      document.getElementById("dright").style.display = "block";
+    };
+    document.getElementById("btnHuy").onclick = function () {
+      document.getElementById("dright").style.display = 'none';
+    };
+  </script>
+</body>
+
+</html>
